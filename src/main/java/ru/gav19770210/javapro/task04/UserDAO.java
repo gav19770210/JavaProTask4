@@ -33,6 +33,7 @@ public class UserDAO implements AbstractDAO<User, Long> {
                     user.setName(rs.getString("name"));
                     return Optional.of(user);
                 }
+                rs.close();
             }
         }
         return Optional.empty();
@@ -52,6 +53,7 @@ public class UserDAO implements AbstractDAO<User, Long> {
                 user.setName(rs.getString("name"));
                 list.add(user);
             }
+            rs.close();
         }
         return list;
     }
@@ -70,6 +72,7 @@ public class UserDAO implements AbstractDAO<User, Long> {
                     if (generatedKeys.next()) {
                         entity.setId(generatedKeys.getLong(1));
                     }
+                    generatedKeys.close();
                 }
                 return entity;
             }
@@ -124,6 +127,7 @@ public class UserDAO implements AbstractDAO<User, Long> {
                     user.setName(rs.getString("name"));
                     return Optional.of(user);
                 }
+                rs.close();
             }
         }
         return Optional.empty();
